@@ -105,6 +105,9 @@ namespace Module\FormBuilder;
  * </code>
  *
  * ### Changelog
+ * 
+ * ## Version 1.7
+ * * Added HTML as a type
  *
  * ## Version 1.6
  * * Added track attribute for google data tracking
@@ -124,9 +127,9 @@ namespace Module\FormBuilder;
  * ## Version 1.1
  * * Added the date and changelog sections to documentation
  *
- * @date September 3, 2014
+ * @date December 3, 2020
  * @author Jaime A. Rodriguez <hi.i.am.jaime@gmail.com>
- * @version 1.6
+ * @version 1.7
  * @license  http://opensource.org/licenses/MIT
  */
 class Form {
@@ -544,6 +547,12 @@ class FormBuilderField {
 			if (isset($this->label)) {
 				$buffer[] = "<label for=\"{$this->name}\">{$this->label}</label>";
 			}
+			break;
+		case 'html':
+			if (isset($this->label)) {
+				$buffer[] = "<label for=\"{$this->name}\">{$this->label}</label>";
+			}
+			$buffer[] = "<div id=\"{$this->name}\" class=\"{$this->class}\">{$this->values[0]}</div>";
 			break;
 		default:
 			if (isset($this->label)) {
