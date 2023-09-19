@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Module\FormBuilder;
 
 /**
@@ -430,6 +430,22 @@ class Field {
 						);
 					}
 				}
+				break;
+			case 'checkbox':
+				if (count($this->values) == 0) {
+					$this->values[0] = NULL;
+				}
+
+				if (isset($this->selected)) {
+					return array(
+						$this->dataMap => $this->values[0]
+					);
+				}
+
+				return array(
+					$this->dataMap => null
+				);
+
 				break;
 			default:
 				if (count($this->values) == 0) {
